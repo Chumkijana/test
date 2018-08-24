@@ -1,0 +1,62 @@
+<div
+  fxFlex="auto"
+  fxLayout="column"
+  class="ml-24 mr-24 mt-24 mb-24">
+
+  <mat-tab-group
+    backgroundColor="primary"
+    class="home-page-tab-group">
+
+    <mat-tab>
+      <ng-template mat-tab-label class="w-full">
+        <mat-icon>business</mat-icon>
+      </ng-template> 
+      <div
+        fxFlex="none"
+        fxLayout="column"
+        class="pl24 pr24">
+        <div class="mt24 mb24">
+              <mat-card>                                 
+                  <mat-card-content>
+                    <mat-card-subtitle>My WorkPlace</mat-card-subtitle> 
+                    <mat-list class="ml-24 mr-24 bg-white">
+                      <mat-list-item class="c-pointer bg-hover">
+                        <img matBadge="22" matBadgePosition="above after" matListAvatar src="https://dummyimage.com/80x80/dadada/000000\u0026text=Logo" alt="workplace">
+                        <h3 matLine> Yellow company </h3>
+                        <button mat-icon-button>
+                          <mat-icon>more_vert</mat-icon>
+                        </button>
+
+                      </mat-list-item>
+                    </mat-list>
+                  </mat-card-content>
+                  <mat-divider></mat-divider>
+                  <mat-card-actions>
+                    <button mat-button>Change</button>
+                    <button mat-button>Invite</button>
+                  </mat-card-actions>
+              </mat-card>
+        </div>
+        <div class="mt24 mb24">
+          <app-contact-group-list-container [groups]="groups"></app-contact-group-list-container>
+        </div>
+
+        <app-contact-list-container [contacts]="contacts"></app-contact-list-container>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>contacts</mat-icon>
+      </ng-template>
+
+      <div class="p24">
+        <app-person-list-container [people]="people"></app-person-list-container>
+      </div>
+    </mat-tab>
+
+
+
+  </mat-tab-group>
+
+</div>

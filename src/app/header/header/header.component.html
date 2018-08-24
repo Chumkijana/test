@@ -1,0 +1,39 @@
+<mat-toolbar
+  fxFlex="none"
+  class="elevation-transition"
+  color="primary"
+  [class.mat-elevation-z4]="!scrollService.atTop">
+
+  <button fxHide.gt-lg mat-icon-button (click)="drawerService.open()" class="mr16">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span fxFlex="auto" class="pr16">{{title}}</span>
+
+  <ng-container>
+    <div [ngSwitch]="headerService.viewMode">
+      <button mat-icon-button (click)="goto('search')" *ngSwitchCase="ViewMode.Module">
+         <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <!-- <button mat-icon-button (click)="headerService.changeDataMode()" [ngSwitch]="headerService.dataMode">
+      <mat-icon *ngSwitchCase="DataMode.Contact">business</mat-icon>
+      <mat-icon *ngSwitchCase="DataMode.People">contacts</mat-icon>
+    </button> -->
+    <button mat-icon-button (click)="headerService.changeViewMode()" [ngSwitch]="headerService.viewMode">
+      <mat-icon *ngSwitchCase="ViewMode.Module">view_list</mat-icon>
+      <mat-icon *ngSwitchCase="ViewMode.List">view_module</mat-icon>
+    </button>
+
+    <button mat-icon-button [matMenuTriggerFor]="headerMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+  </ng-container>
+
+</mat-toolbar>
+
+<mat-menu #headerMenu="matMenu" xPosition="before">
+  <button mat-menu-item>Sort</button>
+  <button mat-menu-item>Select</button>
+</mat-menu>

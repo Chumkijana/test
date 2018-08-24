@@ -1,0 +1,17 @@
+@mixin banner-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $background: map-get($theme, background);
+
+  // .banner {
+  //   box-sizing: border-box;
+  //   min-height: 64px;
+  //   padding: 24px;
+  // }
+
+  .banner-primary {
+    background: mat-color($primary);
+    color: mat-color($primary, default-contrast);
+  }
+
+}

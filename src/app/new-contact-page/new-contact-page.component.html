@@ -1,0 +1,53 @@
+<div fxLayout="column" fxFill>
+  <mat-toolbar
+    fxFlex="none"
+    class="mat-elevation-z4"
+    color="primary"
+    [class.mat-elevation-z4]="!scrollService.atTop">
+
+    <button
+      mat-icon-button
+      (click)="location.back()">
+      <mat-icon>clear</mat-icon>
+    </button>
+
+    <div fxFlex class="pl16 pr16">
+      <span>New Contact</span>
+    </div>
+
+  </mat-toolbar>
+
+  <div
+    fxLayout="column"
+    fxLayoutGap="16px"
+    fxFlex="auto"
+    class="p24">
+
+    <div
+      fxFlex="none">
+
+      <mat-form-field class="w-full">
+        <input matInput [placeholder]="placeHolder" [(ngModel)]="q">
+      </mat-form-field>
+    </div>
+
+    <div
+      fxFlex="none"
+      fxLayout="row">
+
+      <div fxFlex="auto" fxLayout="row">
+        <mat-radio-group [(ngModel)]="searchContext" (change)="onChange()">
+          <mat-radio-button class="d-block pb24" value="Business">Business</mat-radio-button>
+          <mat-radio-button class="d-block pb24" value="People">People</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div fxFlex="none" fxLayoutAlign="center center">
+        <button mat-button (click)="onNext()" [disabled]="q.length===0">Next</button>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

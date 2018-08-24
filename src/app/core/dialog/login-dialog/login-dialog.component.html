@@ -1,0 +1,79 @@
+<mat-toolbar>
+  <span>Sign in</span>
+</mat-toolbar>
+
+<form class="p24" [formGroup]="form">
+
+  <mat-form-field class="w-full mb24">
+    <input matInput placeholder="Email" focused [formControl]="email" type="email">
+    <mat-error *ngIf="email.hasError('required')">
+      Enter an email
+    </mat-error>
+
+    <mat-error *ngIf="email.hasError('pattern')">
+      invalid
+    </mat-error>
+
+    <mat-error *ngIf="email.hasError('serverError')">
+      {{ email.errorMessage }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-full">
+    <input matInput placeholder="Password" [formControl]="password" type="password">
+    <mat-error *ngIf="password.hasError('required')">
+      Please enter your password.
+    </mat-error>
+
+    <mat-error *ngIf="password.hasError('serverError')">
+      Wrong password. Try again.
+    </mat-error>
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <mat-checkbox>Stay signed in</mat-checkbox>
+    <span fxFlex></span>
+    <button mat-button>Forgot Password?</button>
+  </div>
+
+
+  <div class="mt16">
+    <button
+      color="primary"
+      mat-raised-button
+      class="w-full"
+      (click)="login()"
+      [disabled]="this.submitting || this.form.invalid">
+      Sign in
+    </button>
+  </div>
+
+  <div class="mt16">
+    <button
+    color="primary"
+    mat-raised-button
+    class="w-full"
+    (click)="facebookLogin()"
+    [disabled]="this.submitting">
+      Sign in with Facebook
+    </button>
+  </div>
+
+  <div class="mt16">
+    <button
+      color="primary"
+      mat-raised-button
+      class="w-full"
+      (click)="googleLogin()"
+      [disabled]="this.submitting">
+      Sign in with Google
+    </button>
+  </div>
+
+  <div class="mt16 mr-16 mb-16" fxLayout="row" fxLayoutAlign="start center">
+    <button mat-button (click)="openRegister()">Create Account</button>
+    <span fxFlex></span>
+    <button mat-button (click)="later()">Later</button>
+  </div>
+
+</form>

@@ -1,0 +1,157 @@
+<div
+  fxLayout="column"
+  fxFill>
+
+  <div
+    fxFlex="none"
+    fxLayout="column">
+
+    <mat-toolbar
+      class="mat-elevation-z4"
+      color="primary"
+      [class.mat-elevation-z4]="!scrollService.atTop">
+
+      <button mat-icon-button (click)="location.back()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+
+      <div fxFlex></div>
+
+      <button *ngIf="!saved" mat-button (click)="save()">
+        Save to contacts
+      </button>
+
+      <button *ngIf="!saved" mat-button (click)="edit()">
+        Edit
+      </button>
+
+      <ng-container *ngIf="saved">
+        <button mat-icon-button #groupTriggerMenu="matMenuTrigger" [mat-menu-trigger-for]="groupMenu">
+          <mat-icon>add</mat-icon>
+        </button>
+
+        <button mat-icon-button #triggerMenu="matMenuTrigger" [mat-menu-trigger-for]="menu" class="mr-8">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu #groupMenu="matMenu" xPosition="before">
+          <h3 mat-subheader>Groups</h3>
+
+          <mat-list>
+            <mat-list-item *ngFor="let group of groups" (click)="onClickGroup($event, group)">
+              <mat-icon mat-list-icon>folder</mat-icon>
+              <h3 mat-line> {{group.name}} </h3>
+              <mat-icon *ngIf="group.selected">done</mat-icon>
+            </mat-list-item>
+
+            <mat-list-item (click)="openContactGroupForm()">
+              <mat-icon mat-list-icon>add</mat-icon>
+              <h3 mat-line>Create new list</h3>
+            </mat-list-item>
+          </mat-list>
+        </mat-menu>
+
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item (click)="edit()">Edit</button>
+          <button mat-menu-item (click)="remove()">Remove from contacts</button>
+
+          <!-- <button mat-menu-item>
+            <mat-icon>people</mat-icon>
+            <span>Collaboration</span>
+          </button> -->
+        </mat-menu>
+      </ng-container>
+
+
+
+    </mat-toolbar>
+  </div>
+
+  <div
+    fxFlex="auto"
+    fxLayout="column"
+    class="pt16 pb56">
+
+    <div
+      fxFlex="none"
+      fxLayout="column"
+      fxLayoutGap="16px"
+      class="pl24 pr24">
+
+      <div
+        fxFlex="none"
+        fxLayout="row"
+        fxLayoutGap="24px"
+        class="mat-elevation-z4 p24">
+
+        <div
+          fxFlex="none"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          class="logo-box"
+          *ngIf="contact">
+          <img [src]="contact?.logo" [alt]="contact?.name">
+        </div>
+
+        <div
+          fxFlex="auto"
+          fxLayout="column">
+          <div class="mat-subheading-1"> {{contact?.name}} </div>
+          <div class="mat-body-1 c-secondary">Business Listing</div>
+        </div>
+
+      </div>
+
+      <div
+        fxFlex="none"
+        fxLayout="column"
+        fxLayoutGap="16px"
+        class="mat-elevation-z4 p24">
+
+        <div
+          fxFlex="none"
+          fxLayout="column">
+          <div class="mat-body-2 c-secondary">Contact Information</div>
+        </div>
+
+        <div
+          fxFlex="none"
+          fxLayout="column"
+          fxLayoutGap="8px">
+
+          <div
+            fxFlex="none"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            fxLayoutGap="24px"
+            *ngFor="let com of contact?.telephones">
+            <mat-icon>phone_outline</mat-icon>
+            <div class="mat-body-1"> {{com.value}} </div>
+          </div>
+
+          <div
+            fxFlex="none"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            fxLayoutGap="24px"
+            *ngFor="let com of contact?.emails">
+            <mat-icon>mail_outline</mat-icon>
+            <div class="mat-body-1"> {{com.value}} </div>
+          </div>
+
+          <div
+            fxFlex="none"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            fxLayoutGap="24px"
+            *ngFor="let com of contact?.websites">
+            <mat-icon>web_outline</mat-icon>
+            <div class="mat-body-1"> {{com.value}} </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

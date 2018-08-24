@@ -1,0 +1,43 @@
+<div
+  fxFlex="none"
+  fxLayout="column">
+
+  <div
+    fxFlex="none"
+    fxFlex="column">
+
+    <mat-toolbar>
+      <span class="mr8">New Group</span>
+    </mat-toolbar>
+  </div>
+
+  <div
+    fxFlex="none"
+    fxFlex="column">
+
+    <form class="p24" [formGroup]="form">
+
+      <mat-form-field class="w-full">
+        <input matInput placeholder="Name" focused required maxlength="100" [formControl]="name">
+
+        <mat-hint align="end">{{ name.value.length }} / 100</mat-hint>
+
+        <mat-error *ngIf="name.hasError('required')">
+          can't be blank
+        </mat-error>
+
+        <mat-error *ngIf="name.hasError('serverError')">
+          {{ name.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+
+      <div class="mt16 mr-16 mb-16" fxLayoutAlign="end">
+        <button mat-button (click)="close()">Cancel</button>
+        <button mat-button (click)="submit()">{{ this.editMode ? 'Update' : 'Create' }}</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+

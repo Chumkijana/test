@@ -1,0 +1,25 @@
+@import '../node_modules/@angular/material/theming';
+@import '~styles/banner';
+@import '~styles/statusbar';
+@import '~styles/drawer-list-item';
+@import "~styles/utilities";
+@import "~styles/spacing";
+
+@include mat-core();
+
+// Define a theme.
+$primary: mat-palette($mat-yellow, 600, 200, 800);
+$accent:  mat-palette($mat-blue, A400, A200, A700);
+$theme: mat-light-theme($primary, $accent);
+
+// Include all theme styles for the components.
+@include utilities($theme);
+@include angular-material-theme($theme);
+@include banner-theme($theme);
+@include statusbar-theme($theme);
+@include drawer-list-item($theme);
+
+// .show-statusbar {
+//   .content-after-toolbar { padding-top: 56px + 48px; }
+//   .toolbar { top: 48px; }
+// }

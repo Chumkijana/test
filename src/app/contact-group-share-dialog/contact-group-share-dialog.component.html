@@ -1,0 +1,69 @@
+<div
+  fxFlex="none"
+  fxLayout="column"
+  class="p24 w-320">
+
+  <div
+    fxFlex="none"
+    fxLayout="column">
+
+    <div class="mat-subheading-1">Share with others</div>
+  </div>
+
+  <div
+    fxFlex="none"
+    fxFlex="column">
+
+    <mat-form-field class="w-full">
+      <mat-chip-list #chipList>
+        <mat-chip
+          *ngFor="let email of emails"
+          [selectable]="selectable"
+          [removable]="removable"
+          (removed)="remove(email)">
+          {{email}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="People"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+    </mat-form-field>
+  </div>
+
+  <div
+    fxFlex="none"
+    fxFlex="column"
+    class="mb16">
+
+    <button mat-button (click)="see()" *ngIf="fetchAccount===0">See who you share to</button>
+
+    <div *ngIf="fetchAccount===1">
+      Fetching accounts
+    </div>
+
+    <div *ngIf="fetchAccount===2">
+      <div>Share accounts</div>
+
+      <div *ngIf="!accounts.length">
+        There is no share account.
+      </div>
+
+      <div *ngFor="let account of accounts">
+        {{account.email}}
+      </div>
+    </div>
+  </div>
+
+  <div
+    fxFlex="none"
+    fxFlex="row"
+    fxLayoutAlign="end"
+    class="mr-16 mb-16">
+    <button mat-button (click)="close()">Cancel</button>
+    <button mat-button (click)="submit()">Share</button>
+  </div>
+
+</div>

@@ -1,0 +1,18 @@
+@mixin drawer-list-item($theme) {
+
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+
+  .drawer-list-item {
+    .mat-icon { color: mat-color($foreground, hint-text); }
+
+    &.active, &:hover {
+      .mat-icon { color: mat-color($primary); }
+    }
+
+    &.active {
+      .mat-line { font-weight: 500 !important; }
+    }
+  }
+
+}

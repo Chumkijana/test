@@ -1,0 +1,47 @@
+<div
+  fxLayout="column">
+
+  <div
+    fxFlex="none"
+    class="mat-title t-ellipsis">
+    Group "{{group?.name}}"
+  </div>
+
+  <div
+    fxFlex="none"
+    fxLayout="row">
+
+    <ng-container *ngIf="account?.id === group?.owner_account_id">
+      <button mat-icon-button (click)="share()">
+        <mat-icon>person_add</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="copyLink()">
+        <mat-icon>insert_link</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="edit()">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="delete()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </ng-container>
+
+    <div class="mat-body-1 c-secondary" *ngIf="account?.id !== group?.owner_account_id">
+      <div>This folder is shared by {{owner.email}}</div>
+
+      <button mat-button (click)="delete()">
+        Remove from share
+      </button>
+    </div>
+  </div>
+
+  <mat-divider class="mb24"></mat-divider>
+
+  <app-contact-list-container
+    [contacts]="contacts">
+  </app-contact-list-container>
+
+</div>

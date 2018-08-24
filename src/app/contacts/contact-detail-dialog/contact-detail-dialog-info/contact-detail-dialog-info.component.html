@@ -1,0 +1,59 @@
+<div class="p24 bg-white mat-elevation-z1">
+  <div class="mat-subheading-1">Contact Info</div>
+
+  <div fxLayout="row" class="mb24">
+    <div fxFlex="20" fxLayout="column" fxLayoutAlign="start center" class="mr24">
+      <button mat-icon-button>
+        <mat-icon>email</mat-icon>
+      </button>
+    </div>
+
+    <div fxFlex fxLayout="column" fxLayoutAlign="center start">
+
+      <div *ngIf="!contact.emails.length" class="mat-body-1">
+        no email
+      </div>
+
+      <div *ngFor="let email of contact.emails">
+        <a class="pt8 pb8 d-block no-link mat-body-1" [href]="'mailto:' + email.value">{{ email.value }}</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div fxLayout="row" class="mb24">
+    <div fxFlex="20" fxLayout="column" fxLayoutAlign="start center" class="mr24">
+      <button mat-icon-button>
+        <mat-icon>call</mat-icon>
+      </button>
+    </div>
+
+    <div fxFlex fxLayout="column" fxLayoutAlign="center start">
+      <div *ngIf="!contact.telephones.length" class="mat-body-1">
+        no telephone
+      </div>
+
+      <div *ngFor="let telephone of contact.telephones">
+        <a class="pt8 pb8 d-block no-link mat-body-1" [href]="'tel:' + telephone.value">{{ telephone.value }}</a>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxFlex="20" fxLayout="column" fxLayoutAlign="start center" class="mr24">
+      <button mat-icon-button>
+        <mat-icon>link</mat-icon>
+      </button>
+    </div>
+
+    <div fxFlex fxLayout="column" fxLayoutAlign="center start">
+      <div *ngIf="!contact.websites.length" class="mat-body-1">
+        no website
+      </div>
+
+      <div *ngFor="let website of contact.websites">
+        <a class="pt8 pb8 d-block no-link mat-body-1" target="_blank" [href]="website.value">{{ website.value }}</a>
+      </div>
+    </div>
+  </div>
+</div>

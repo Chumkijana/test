@@ -1,0 +1,33 @@
+<div fxLayout="column" fxLayoutGap="24px">
+
+  <div fxLayout="column" fxLayoutGap="8px">
+    <div fxLayout="row">
+      <div fxFlex="auto" class="mw-0" fxLayout="column" fxLayoutAlign="center">
+        <span class="mat-body-2 t-ellipsis c-secondary">Favorites</span>
+      </div>
+    </div>
+
+    <mat-list class="ml-24 mr-24 bg-white">
+      <mat-list-item *ngFor="let group of groups | slice:0:3" class="c-pointer bg-hover">
+        <mat-icon matListIcon>folder</mat-icon>
+        <h3 matLine> {{group.name}} </h3>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="8px">
+    <div fxLayout="row">
+      <div fxFlex="auto" class="mw-0" fxLayout="column" fxLayoutAlign="center">
+        <span class="mat-body-2 t-ellipsis c-secondary">All</span>
+      </div>
+    </div>
+
+    <mat-list class="ml-24 mr-24 bg-white">
+      <mat-list-item *ngFor="let group of groups" class="c-pointer bg-hover">
+        <mat-icon matListIcon>folder</mat-icon>
+        <h3 matLine> {{group.name}} </h3>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+</div>

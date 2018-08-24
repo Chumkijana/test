@@ -1,0 +1,56 @@
+<mat-toolbar>
+  <span>Register</span>
+</mat-toolbar>
+
+<form class="p24" [formGroup]="form">
+
+  <mat-form-field class="w-full mb24">
+    <input matInput placeholder="Email" focused required [formControl]="email" type="email">
+    <mat-error *ngIf="email.hasError('required')">
+      can't be blank
+    </mat-error>
+
+    <mat-error *ngIf="email.hasError('pattern')">
+      invalid
+    </mat-error>
+
+    <mat-error *ngIf="email.hasError('serverError')">
+      {{ email.errorMessage }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-full">
+    <input matInput placeholder="Password" required [formControl]="password" type="password">
+
+    <mat-error *ngIf="password.hasError('required')">
+      can't be blank
+    </mat-error>
+
+    <mat-error *ngIf="password.hasError('minlength')">
+      is too short (minimum is 8 characters)
+    </mat-error>
+
+    <mat-error *ngIf="email.hasError('server')">
+      {{ password.errorMessage }}
+    </mat-error>
+  </mat-form-field>
+
+  <div class="mt16">
+    <button
+      color="primary"
+      mat-raised-button
+      class="w-full"
+      (click)="register()"
+      [disabled]="this.submitting || this.form.invalid">
+      Register
+    </button>
+  </div>
+
+  <div class="mt16 mr-16 mb-16" fxLayout="row" fxLayoutAlign="start center">
+    <span class="mr8">Have an account?</span>
+    <button mat-button (click)="openLogin()">Sign in</button>
+    <span fxFlex></span>
+    <button mat-button (click)="later()">Later</button>
+  </div>
+
+</form>

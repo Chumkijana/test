@@ -1,0 +1,32 @@
+<mat-card>                                 
+   <mat-card-content>
+    <div
+      fxLayout="column"
+      fxLayoutGap="8px">
+
+      <div class="mw-0" *ngIf="contacts.length">
+        <div class="mat-body-2 t-ellipsis c-secondary">{{contacts.length}} Saved Listing</div>
+      </div>
+
+      <div
+        *ngIf="!contacts.length">
+        There is no contact yet.
+      </div>
+
+      <ng-container
+        *ngIf="contacts.length"
+        [ngSwitch]="headerService.viewMode">
+
+        <app-contact-list
+          *ngSwitchCase="ViewMode.List"
+          [contacts]="contacts">
+        </app-contact-list>
+
+        <div *ngSwitchCase="ViewMode.Module">
+          Module Mode
+        </div>
+      </ng-container>
+
+    </div>
+  </mat-card-content>
+</mat-card>

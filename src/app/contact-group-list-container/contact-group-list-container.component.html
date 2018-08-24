@@ -1,0 +1,35 @@
+
+<mat-card>                                 
+   <mat-card-content>
+      <div
+        fxLayout="column"
+        fxLayoutGap="8px">
+
+        <div class="mw-0">
+          <div class="mat-body-2 t-ellipsis c-secondary">My Groups</div>
+        </div>
+
+        <div
+          *ngIf="!groups.length">
+          There is no group yet.
+        </div>
+
+        <ng-container
+          *ngIf="groups.length"
+          [ngSwitch]="headerService.viewMode">
+
+          <app-contact-group-list
+            *ngSwitchCase="ViewMode.List"
+            [groups]="groups">
+          </app-contact-group-list>
+
+          <ng-container *ngSwitchCase="ViewMode.Module">
+            <div>Module Mode</div>
+          </ng-container>
+
+        </ng-container>
+
+      </div>
+
+   </mat-card-content>
+ </mat-card>

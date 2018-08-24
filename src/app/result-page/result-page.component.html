@@ -1,0 +1,61 @@
+<div fxLayout="column" fxFill>
+  <mat-toolbar
+    fxFlex="none"
+    class="mat-elevation-z4"
+    color="primary"
+    [class.mat-elevation-z4]="!scrollService.atTop">
+
+    <button
+      mat-icon-button
+      (click)="location.back()">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+
+    <div fxFlex class="pl16 pr16">
+      <span>{{q}}</span>
+    </div>
+  </mat-toolbar>
+
+  <mat-tab-group
+    [selectedIndex]="selectedIndex"
+    backgroundColor="primary"
+    color="primary"
+    class="result-page-tab-group">
+
+    <mat-tab>
+      <ng-template mat-tab-label class="w-full">
+        <mat-icon>business</mat-icon>
+      </ng-template>
+
+      <div
+        fxFlex="none"
+        class="pl24 pr24">
+
+        <app-contact-list [contacts]="contacts"></app-contact-list>
+
+        <div *ngIf="!contacts.length">
+          <div class="mb24">no result</div>
+
+          <div>
+            <button mat-button (click)="changePortal()">Change portal</button>
+          </div>
+        </div>
+      </div>
+
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>contacts</mat-icon>
+      </ng-template>
+
+      <mat-nav-list class="bg-white pb8">
+        <mat-list-item *ngFor="let person of people">
+          {{person.name}}
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-tab>
+
+  </mat-tab-group>
+
+</div>

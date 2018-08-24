@@ -1,0 +1,15 @@
+<mat-nav-list
+  class="ml-24 mr-24 bg-white pb8">
+
+  <mat-list-item
+    *ngFor="let contact of contacts"
+    (click)="onClick(contact)">
+
+    <img matListAvatar [src]="contact.logo" [alt]="contact.name">
+    <h3 matLine> {{contact.name}} </h3>
+    <button mat-icon-button>
+    	<mat-icon>arrow_drop_down</mat-icon>
+  	</button>
+  </mat-list-item>
+
+</mat-nav-list>

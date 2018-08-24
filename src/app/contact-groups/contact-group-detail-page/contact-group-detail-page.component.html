@@ -1,0 +1,42 @@
+<mat-toolbar class="mat-elevation-z4" color="primary">
+  <button mat-icon-button class="mr16" (click)="openSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span fxFlex>{{ contactGroup?.name }} ({{ contactGroup?.items_count }})</span>
+
+  <button mat-icon-button (click)="openInviteForm()" *ngIf="isAuthenticated">
+    <mat-icon>person_add</mat-icon>
+  </button>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+
+    <button mat-menu-item (click)="gotoCollaboration()" *ngIf="isAuthenticated">
+      <mat-icon>people</mat-icon>
+      <span>Collaboration</span>
+    </button>
+
+    <button mat-menu-item (click)="openContactGroupForm()">
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+
+    <button mat-menu-item (click)="deleteContactGroup()">
+      <mat-icon>delete</mat-icon>
+      <span>Delete</span>
+    </button>
+
+  </mat-menu>
+</mat-toolbar>
+
+<app-contact-list
+  class="d-block pt8"
+  [contacts]="contacts">
+</app-contact-list>
+
+<app-contact-search-button>
+</app-contact-search-button>

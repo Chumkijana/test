@@ -1,0 +1,42 @@
+<div
+  fxFlex="auto"
+  fxLayout="column"
+  class="p24">
+
+  <div
+    fxFlex="none"
+    fxLayout="column">
+
+    <div class="mat-subheading-1">Choose Default Portal</div>
+  </div>
+
+  <div
+    fxFlex="auto"
+    fxLayout="column"
+    class="o-scroll portal-list-wrapper">
+
+    <div
+      *ngFor="let portal of portals"
+      class="pt8 pb8 c-pointer bg-hover"
+      (click)="choose(portal)"
+      fxFlex="none"
+      fxLayout="row">
+
+      <div class="icon-wrapper ml16 mr16">
+        <mat-icon *ngIf="portalId === portal.id">done</mat-icon>
+      </div>
+
+      <div>{{portal.name}}</div>
+    </div>
+  </div>
+
+  <div
+    fxFlex="none"
+    fxLayout="row"
+    fxLayoutAlign="end"
+    class="mr-16 mb-16 mt24">
+
+    <button mat-button (click)="close()">Cancel</button>
+    <button mat-button (click)="submit()">Choose</button>
+  </div>
+</div>

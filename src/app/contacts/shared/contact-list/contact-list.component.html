@@ -1,0 +1,9 @@
+<div *ngFor="let contact of contacts" class="contact" fxLayout="row" (click)="openContactDetail(contact)">
+  <div class="contact-image" fxFlex="initial" fxLayout="column" fxLayoutAlign="center center">
+    <img [src]="contact.logo" [alt]="contact.name">
+  </div>
+
+  <div fxFlex fxLayout="column" fxLayoutAlign="center">
+    <div class="mat-body-1">{{ contact.name }}</div>
+  </div>
+</div>

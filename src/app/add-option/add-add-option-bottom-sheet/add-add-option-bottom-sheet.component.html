@@ -1,0 +1,27 @@
+<div fxLayout="column">
+
+  <div class="p24">
+    <span class="mat-body-1">New</span>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div fxLayout="row wrap">
+
+    <div
+      *ngFor="let addOption of addOptions"
+      fxFlex.xs="33.33"
+      fxFlex.sm="auto"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="8px"
+      class="p24 c-pointer bg-hover"
+      (click)="onClickAddOption(addOption.name)">
+
+      <mat-icon class="i-48">{{addOption.icon}}</mat-icon>
+      <span>{{addOption.text}}</span>
+    </div>
+
+  </div>
+
+</div>

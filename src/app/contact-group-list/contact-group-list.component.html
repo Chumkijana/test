@@ -1,0 +1,16 @@
+<mat-nav-list>
+
+  <mat-list-item
+    *ngFor="let group of groups"
+    (click)="onClick(group)">
+
+    <mat-icon matListIcon>folder</mat-icon>
+    <h3 matLine> {{group.name}} </h3>
+    <p matLine class="c-secondary"> {{group.caption}} </p>
+    <button mat-icon-button>
+	    <mat-icon>more_vert</mat-icon>
+	 </button>
+	  <mat-divider></mat-divider>
+  </mat-list-item>
+
+</mat-nav-list>

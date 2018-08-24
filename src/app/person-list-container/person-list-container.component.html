@@ -1,0 +1,29 @@
+<div
+  fxLayout="column"
+  fxLayoutGap="8px">
+
+  <div class="mw-0">
+    <div class="mat-body-2 t-ellipsis c-secondary">People</div>
+  </div>
+
+  <div
+    *ngIf="!people.length">
+    There is no person yet.
+  </div>
+
+  <ng-container
+    *ngIf="people.length"
+    [ngSwitch]="headerService.viewMode">
+
+    <app-person-list
+      *ngSwitchCase="ViewMode.List"
+      [people]="people">
+    </app-person-list>
+
+    <ng-container *ngSwitchCase="ViewMode.Module">
+      <div>Module Mode</div>
+    </ng-container>
+
+  </ng-container>
+
+</div>

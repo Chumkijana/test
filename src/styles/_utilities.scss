@@ -1,0 +1,89 @@
+@mixin utilities($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  /* */
+  .no-link { text-decoration: none; color: #2962ff; }
+
+  /* BACKGROUND */
+  .bg-white { background: white !important; }
+  .bg-none { background: transparent !important; }
+  .bg-hover:hover { background: mat-color($background, 'hover') !important; }
+  .bg-primary { background: mat-color($primary) !important; }
+  .bg-accent {
+    background: mat-color($accent) !important;
+    color: mat-color($accent, 'default-contrast') !important;
+  }
+
+  /* BORDER */
+  .b-none { border: none !important; }
+
+  /* BOX-SIZING */
+  .bs-border-box { box-sizing: border-box !important; }
+
+  /* COLOR */
+  .c-hint { color: mat-color($foreground, hint-text) !important; }
+  .c-secondary { color: mat-color($foreground, secondary-text) !important; }
+  .c-primary { color: mat-color($primary) !important; }
+  .c-accent { color: mat-color($accent) !important; }
+
+  /* CURSOR */
+  .c-pointer { cursor: pointer !important; }
+
+  /* DISPLAY */
+  .d-block { display: block !important; }
+
+  /* HEIGHT */
+  .h-full { height: 100% !important; }
+  .h-48 { height: 48px !important;}
+  .h-56 { height: 56px !important;}
+
+  /* ICON */
+  .i-48 { width: 48px !important; height: 48px !important; font-size: 48px !important; }
+
+  /* OVERFLOW */
+  .o-scroll { overflow: scroll !important; }
+  .o-auto { overflow: auto; }
+
+  /* POSITION */
+  .p-relative { position: relative !important; }
+  .p-absolute { position: absolute !important; }
+
+  /* TEXT */
+
+  // https://github.com/angular/flex-layout/wiki/Responsive-API
+  /* RESPONSIVE */
+  .max-screen-xs { max-width: 599px !important; }
+  .max-screen-sm { max-width: 959px !important; }
+  .max-screen-md { max-width: 1279px !important; }
+
+  /* ROTATE */
+  .rotate { transition: .15s transform; }
+  .rotate180 { transform: rotate(-180deg); }
+
+  /* TEXT */
+  .t-center { text-align: center; }
+  .t-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* WIDTH */
+  .w-full { width: 100% !important; }
+  .w-320 { width: 320px !important; }
+  .mw-0 { min-width: 0 !important; }
+
+  /* Z-INDEX */
+  .z-1 { z-index: 1 !important; }
+  .z-2 { z-index: 2 !important; }
+  .z-4 { z-index: 4 !important; }
+
+  .elevation-transition {
+    @include mat-elevation-transition;
+  }
+
+}

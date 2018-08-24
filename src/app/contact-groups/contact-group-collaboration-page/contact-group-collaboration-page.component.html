@@ -1,0 +1,23 @@
+<mat-toolbar class="mat-elevation-z4" color="toolbar">
+  <button mat-icon-button class="mr16" (click)="close()">
+    <mat-icon>clear</mat-icon>
+  </button>
+
+  <span fxFlex>{{ contactGroup?.name }} ({{ contactGroup?.items_count }})</span>
+
+  <button mat-icon-button (click)="open()">
+    <mat-icon>person_add</mat-icon>
+  </button>
+</mat-toolbar>
+
+
+<div class="pt8">
+  <mat-list>
+    <mat-list-item *ngFor="let account of accounts">
+      <h3 matLine> {{ account.email }} </h3>
+      <button mat-icon-button (click)="remove(account)">
+        <mat-icon class="mat-24">clear</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>

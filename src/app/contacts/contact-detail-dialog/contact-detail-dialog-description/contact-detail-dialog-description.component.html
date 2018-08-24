@@ -1,0 +1,12 @@
+<div class="p24 bg-white mat-elevation-z1">
+  <div class="mat-subheading-1">Contact Description</div>
+
+  <p class="mat-body-1" *ngIf="!contact.descs.length">
+    no description
+  </p>
+
+  <div *ngFor="let desc of contact.descs" flexLayout="column">
+    <div class="mat-body-2">{{ desc.title }}</div>
+    <p class="mat-caption">{{ desc.desc }}</p>
+  </div>
+</div>

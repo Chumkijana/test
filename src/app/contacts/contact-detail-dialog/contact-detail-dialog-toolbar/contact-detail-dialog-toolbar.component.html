@@ -1,0 +1,77 @@
+<mat-toolbar class="contact-detail-dialog-toolbar mat-elevation-z4" color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="close()">
+      <mat-icon>clear</mat-icon>
+    </button>
+
+    <span fxFlex></span>
+
+    <button *ngIf="!saved" mat-raised-button color="primary" (click)="save()">
+      Save
+    </button>
+
+    <ng-container *ngIf="saved">
+      <button mat-icon-button #triggerMenu="matMenuTrigger" [mat-menu-trigger-for]="menu" class="mr-8">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="remove()">
+          <mat-icon>delete</mat-icon>
+          <span>Remove from contacts</span>
+        </button>
+
+        <mat-list>
+          <h3 mat-subheader>Lists</h3>
+
+          <mat-list-item *ngFor="let contactGroup of contactGroups" (click)="onToggleSelect($event, contactGroup)">
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <h3 mat-line> {{ contactGroup.name }} </h3>
+            <mat-icon *ngIf="isSelected(contactGroup)">done</mat-icon>
+          </mat-list-item>
+
+          <mat-list-item (click)="openContactGroupForm()">
+            <mat-icon mat-list-icon>add</mat-icon>
+            <h3 mat-line>Create new list</h3>
+          </mat-list-item>
+
+        </mat-list>
+
+        <mat-list>
+          <h3 mat-subheader>Shared Lists</h3>
+
+          <mat-list-item *ngFor="let contactGroup of sharedContactGroups" (click)="onToggleSelectSharedContactGroup($event, contactGroup)">
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <h3 mat-line> {{ contactGroup.name }} </h3>
+            <mat-icon *ngIf="isSelectedSharedContactGroup(contactGroup)">done</mat-icon>
+          </mat-list-item>
+
+        </mat-list>
+
+      </mat-menu>
+    </ng-container>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row class="contact-detail-dialog-toolbar-title-row">
+    <div *ngIf="contact.logo" class="contact-detail-dialog-toolbar-image" fxFlex="none">
+      <img [src]="contact.logo" [alt]="contact.name">
+    </div>
+
+    <div class="pl24" fxFlex fxLayout="column">
+      <div>{{ contact.name }}</div>
+
+      <div>
+        <mat-chip-list>
+          <mat-chip *ngFor="let contactGroup of selectedContactGroups" color="primary" selected="true">
+            {{ contactGroup.name }}
+          </mat-chip>
+
+          <mat-chip *ngFor="let contactGroup of selectedSharedContactGroups" color="primary" selected="true">
+              {{ contactGroup.name }}
+            </mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>

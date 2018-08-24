@@ -1,0 +1,169 @@
+<div
+  fxLayout="column"
+  fxFill
+  class="w-320">
+
+  <div
+    fxFlex="none"
+    fxLayout="column"
+     *ngIf="false"
+    >
+    <mat-list class="">
+      <mat-list-item
+        class="c-pointer"
+        (click)="dialogService.login()">
+        <h3 matLine>SIGN IN</h3>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <ng-container *ngIf="true"
+    >
+
+    
+
+    <div fxFlex="none">
+      <mat-nav-list class="pb8">
+        <mat-list-item
+          class="drawer-list-item"
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+          (click)="drawerService.close()">
+          <mat-icon matListIcon>contacts</mat-icon>
+          <h3 matLine>Contacts</h3>
+        </mat-list-item>
+
+        <mat-list-item
+          class="drawer-list-item"
+          routerLink="/share-with-me"
+          routerLinkActive="active"
+          (click)="drawerService.close()">
+          <mat-icon matListIcon>people</mat-icon>
+          <h3 matLine>Share with me</h3>
+        </mat-list-item>
+
+        <mat-list-item
+          class="drawer-list-item"
+          routerLink="/recent"
+          routerLinkActive="active"
+          (click)="drawerService.close()">
+          <mat-icon matListIcon>access_time</mat-icon>
+          <h3 matLine>Recent</h3>
+        </mat-list-item>
+
+        <mat-list-item
+          class="drawer-list-item"
+          routerLink="/vip"
+          routerLinkActive="active"
+          (click)="drawerService.close()">
+          <mat-icon matListIcon>star</mat-icon>
+          <h3 matLine>VIP</h3>
+        </mat-list-item>
+
+        <mat-list-item
+          class="drawer-list-item"
+          routerLink="/bin"
+          routerLinkActive="active"
+          (click)="drawerService.close()">
+          <mat-icon matListIcon>delete</mat-icon>
+          <h3 matLine>Bin</h3>
+        </mat-list-item>
+      </mat-nav-list>
+
+      <mat-divider></mat-divider>
+    </div>
+
+    <div fxFlex="none">
+      <mat-nav-list class="pb8">
+        <mat-list-item
+          class="drawer-list-item"
+          routerLink="/plan"
+          routerLinkActive="active"
+          (click)="drawerService.close()">
+          <mat-icon matListIcon>storage</mat-icon>
+          <h3 matLine>Upgrade to premium</h3>
+          <p matLine class="c-secondary">Currently using Free plan</p>
+        </mat-list-item>
+
+        <mat-list-item
+          class="drawer-list-item"
+          routerLink="/notifications"
+          routerLinkActive="active"
+          (click)="drawerService.close()">
+          <mat-icon matListIcon>notifications</mat-icon>
+          <h3 matLine>Notifications</h3>
+        </mat-list-item>
+
+        <mat-list-item
+          class="drawer-list-item"
+          routerLink="/settings"
+          routerLinkActive="active"
+          (click)="drawerService.close()">
+          <mat-icon matListIcon>settings</mat-icon>
+          <h3 matLine>Settings</h3>
+        </mat-list-item>
+
+        <mat-list-item
+          class="drawer-list-item"
+          routerLink="/help"
+          routerLinkActive="active"
+          (click)="drawerService.close()">
+          <mat-icon matListIcon>help</mat-icon>
+          <h3 matLine>Help & Feedback</h3>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>   
+    
+    <div
+      fxFlex="none"
+      class="mat-elevation-z1">
+      <mat-list class="pt0">
+        <mat-list-item>
+          <h3 matLine class="c-secondary"> Get the app </h3>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div fxFlex="auto"></div>
+
+    <div
+      fxFlex="none"
+      fxLayout="column"  
+      *ngIf="signoutshow"   
+      >
+      <mat-list class="pt0">
+        <mat-list-item
+         >
+         <mat-icon matListIcon>settings</mat-icon>
+          <h3 matLine>Manage Accounts</h3>
+        </mat-list-item>
+      </mat-list>
+      <mat-list class="pt0">
+        <mat-list-item
+          (click)="logout()">
+          <mat-icon matListIcon>logout</mat-icon>
+          <h3 matLine>SIGN OUT</h3>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div fxFlex="none" *ngIf="account">
+      <mat-nav-list class="pb8">
+        <mat-list-item routerLinkActive="active">
+          <img routerLink="/profile" matListAvatar [src]="account.avatar" [alt]="account.name">
+          <h3 matLine routerLink="/profile"> {{account.name}} </h3>
+          <p matLine class="c-secondary" routerLink="/profile"> {{account.company ? account.company.name : account.email}} </p>
+           <button mat-icon-button (click)="toggle()" id="bt">
+              <mat-icon>{{buttonName}}</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-nav-list>
+
+      <mat-divider></mat-divider>
+    </div>
+
+
+  </ng-container>
+
+</div>

@@ -1,0 +1,6 @@
+<mat-toolbar color="warn" *ngIf="unsaved">
+  <span class="mat-body-1">You have unsaved data.</span>
+
+  <span fxFlex></span>
+  <button mat-button class="mr-8" (click)="register()">SAVE NOW</button>
+</mat-toolbar>

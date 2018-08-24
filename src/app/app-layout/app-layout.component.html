@@ -1,0 +1,36 @@
+<mat-drawer-container fxFill>
+
+  <mat-drawer #drawer mode="over">
+    <div fxFlex="none" fxFill class="o-scroll">
+      <app-drawer></app-drawer>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <div fxLayout="column" fxFill class="mat-elevation-z1">
+      <div fxFlex="none" class="z-4">
+        <app-header></app-header>
+      </div>
+
+      <div fxFlex="auto" fxLayout="row">
+         <!-- <div fxHide.gt-sm fxFlex="none" class="mat-elevation-z2 z-2 o-scroll">
+          <app-drawer></app-drawer>
+        </div> --> 
+
+        <div
+          fxFlex="auto"
+          class="pt24 pl24 pr24 pb56 o-scroll"
+          (scroll)="onScroll($event)"
+         >
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+<app-add-option-button>
+</app-add-option-button>
